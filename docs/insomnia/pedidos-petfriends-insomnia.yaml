@@ -1,0 +1,133 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: PetFriends Pedidos
+meta:
+  id: wrk_c3d2d7f8ad9d4f6fb164f80e5bbb32eb
+  created: 1782281788531
+  modified: 1782281788531
+  description: ""
+collection:
+  - url: "{{ _[''].base_url }}/api/pedidos"
+    name: Criar Pedido
+    meta:
+      id: req_8d8a8ca774fc454b8f8d6424eb6ce5de
+      created: 1782283221153
+      modified: 1782283378659
+      isPrivate: false
+      description: ""
+      sortKey: -1782283221153
+    method: POST
+    body:
+      mimeType: application/json
+      text: |
+        {
+          "clienteId": "00000000-0000-0000-0000-000000000000",
+          "items": [
+            {
+              "produtoId": "11111111-1111-1111-1111-111111111111",
+              "nome": "Ração Premium",
+              "quantidade": 2,
+              "precoUnitario": 120.00
+            }
+          ]
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _[''].base_url }}/api/pedidos/{{ _[''].pedidoId }}/confirmar-pagamento"
+    name: Confirmar Pagamento
+    meta:
+      id: req_9f117d3139d340dd90856c1a3dc94701
+      created: 1782283562683
+      modified: 1782283957735
+      isPrivate: false
+      description: ""
+      sortKey: -1782283562683
+    method: POST
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _[''].base_url }}/api/pedidos/{{ _[''].pedidoId }}/enviar"
+    name: Enviar Pedido
+    meta:
+      id: req_37e658e4393e4c33aada86129cf6953b
+      created: 1782283808396
+      modified: 1782284010359
+      isPrivate: false
+      description: ""
+      sortKey: -1782283808396
+    method: POST
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _[''].base_url }}/api/pedidos/{{ _[''].pedidoId }}/cancelar"
+    name: Cancelar Pedido
+    meta:
+      id: req_7d7a12d88fc74ef59def4a10571e33b7
+      created: 1782284031898
+      modified: 1782284148290
+      isPrivate: false
+      description: ""
+      sortKey: -1782284031898
+    method: POST
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _[''].base_url }}/api/pedidos/{{ _[''].pedidoId }}"
+    name: Buscar Pedido
+    meta:
+      id: req_8431977c42844e5b91f2dc71fdeb2446
+      created: 1782284234897
+      modified: 1782284261075
+      isPrivate: false
+      description: ""
+      sortKey: -1782284234897
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_e87b1136007710a9ef30ef3a0f3109c13321de29
+    created: 1782281788533
+    modified: 1782281788533
+environments:
+  name: Base Environment
+  meta:
+    id: env_e87b1136007710a9ef30ef3a0f3109c13321de29
+    created: 1782281788532
+    modified: 1782284659451
+    isPrivate: false
+  data:
+    "":
+      base_url: http://localhost:8080
+      pedidoId: 678d7642-ad3f-4f1c-8a40-3213bab0d08d
