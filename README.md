@@ -31,6 +31,9 @@ Importe o arquivo docs/insomnia/pedidos-petfriends-insomnia para o insomnia para
 - user sa, 
 - senha vazia.
 
+# Faça a query
+select * from pedidos;
+select * from pedido_items;
 
 ## Endpoints principais
 - **Criar pedido**

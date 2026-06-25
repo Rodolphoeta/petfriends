@@ -14,7 +14,7 @@ public class PedidoInboundService {
             System.out.println("[ALMOXARIFADO] Evento recebido com sucesso!");
             System.out.println("[ALMOXARIFADO] Payload JSON: " + payloadJson);
 
-            // Corrigido para bater com o seu padrão "items"
+
             if (payloadJson != null && payloadJson.contains("items")) {
                 System.out.println("[ALMOXARIFADO] Itens identificados com sucesso.");
                 System.out.println("[ALMOXARIFADO] Baixa automatizada realizada no ProdutoEstoqueRepository.");
