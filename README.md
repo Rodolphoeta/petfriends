@@ -77,7 +77,7 @@ para configurar as requisições HTTP HTTPs
 3. Cole isso:
    const response = insomnia.response.json();
    if (response && response.id) {
-   insomnia.environment.set("pedidoId", response.id);
+   insomnia.environment.set("Id", response.id);
    }
 
 - Ctrl + E Edit Environments → click to edit
