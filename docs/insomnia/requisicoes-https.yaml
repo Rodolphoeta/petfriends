@@ -1,0 +1,199 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: PetFriends Pedidos
+meta:
+  id: wrk_c3d2d7f8ad9d4f6fb164f80e5bbb32eb
+  created: 1782281788531
+  modified: 1782428953278
+  description: ""
+collection:
+  - url: "{{ _.url[''] }}/api/pedidos"
+    name: Criar Pedido
+    meta:
+      id: req_2ac7ef7feff24856b80a923b7c2f64d2
+      created: 1782283221153
+      modified: 1782454144826
+      isPrivate: false
+      description: ""
+      sortKey: -1782454078150
+    method: POST
+    body:
+      mimeType: application/json
+      text: |
+        {
+          "clienteId": "00000000-0000-0000-0000-000000000000",
+         "enderecoDestino": {
+            "logradouro": "Rua das Flores",
+            "numero": "123",
+            "cidade": "Rio de Janeiro",
+            "cep": "20000-000"
+           },
+          "items": [
+            {
+              "produtoId": "11111111-1111-1111-1111-111111111111",
+              "nome": "Ração Premium",
+              "quantidade": 2,
+              "precoUnitario": 120.00
+            }
+          ]
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    scripts:
+      afterResponse: |-
+        const response = insomnia.response.json();
+        if (response && response.id) {
+            insomnia.environment.set("Id", response.id);
+        }
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.url[''] }}/api/pedidos/{{ _.Id }}/confirmar-pagamento"
+    name: Confirmar Pagamento
+    meta:
+      id: req_d4d83bbaf0f244d6b7f04aadb3604d3e
+      created: 1782283562683
+      modified: 1782455245795
+      isPrivate: false
+      description: ""
+      sortKey: -1782454074270.625
+    method: POST
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.url[''] }}/api/pedidos/{{ _.Id }}/enviar"
+    name: Enviar Pedido
+    meta:
+      id: req_dd7683aceadf46f18bf3f67324a4a327
+      created: 1782283808396
+      modified: 1782455644541
+      isPrivate: false
+      description: ""
+      sortKey: -1782454073543.2422
+    method: POST
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.url[''] }}/api/pedidos/{{ _.Id }}/cancelar"
+    name: Cancelar Pedido
+    meta:
+      id: req_9a7328294109482a8bd1855115b8e3e2
+      created: 1782284031898
+      modified: 1782455467655
+      isPrivate: false
+      description: ""
+      sortKey: -1782454073179.5508
+    method: POST
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.url[''] }}/api/pedidos/{{ _.Id }}"
+    name: Buscar Pedido
+    meta:
+      id: req_720fc52923424ab1a902a782a6fb6bbd
+      created: 1782284234897
+      modified: 1782455310655
+      isPrivate: false
+      description: ""
+      sortKey: -1782454073300.7812
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.url[''] }}/api/pedidos/{{ _.Id }}/em-preparacao"
+    name: Em preparação
+    meta:
+      id: req_d37ee244b87a4a98a727db2b798c43dc
+      created: 1782453940547
+      modified: 1782455829871
+      isPrivate: false
+      description: ""
+      sortKey: -1782454073785.7031
+    method: POST
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.url[''] }}/api/pedidos/{{ _.Id }}/em-transito"
+    name: Em Transito
+    meta:
+      id: req_e447db52fcf84b01af0dea376be58048
+      created: 1782454047115
+      modified: 1782455847986
+      isPrivate: false
+      description: ""
+      sortKey: -1782454073422.0117
+    method: POST
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.url[''] }}/api/pedidos/{{ _.Id }}/entregar"
+    name: Entrega
+    meta:
+      id: req_3974b8aecc444a40a0d94f6f644e252f
+      created: 1782454109185
+      modified: 1782455862904
+      isPrivate: false
+      description: ""
+      sortKey: -1782283808296
+    method: POST
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_e87b1136007710a9ef30ef3a0f3109c13321de29
+    created: 1782428953369
+    modified: 1782458058441
+environments:
+  name: Base Environment
+  meta:
+    id: env_e87b1136007710a9ef30ef3a0f3109c13321de29
+    created: 1782281788532
+    modified: 1782458058446
+    isPrivate: false
+  data:
+    url:
+      "": http://localhost:8080
+    Id: cb2a72c4-3cf8-40c6-a05b-f55bfc846b68
