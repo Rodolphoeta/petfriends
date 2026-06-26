@@ -2,7 +2,6 @@ package com.petfriends.pedidos.controller;
 
 import com.petfriends.pedidos.domain.OrderItem;
 import com.petfriends.pedidos.service.PedidoService;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -28,23 +27,40 @@ public class PedidoController {
         return ResponseEntity.ok(new CreatePedidoResponse(id));
     }
 
-
     @PostMapping("/{id}/confirmar-pagamento")
-    public ResponseEntity<Void> confirmarPagamento(@PathVariable("id") UUID id) {
+    public ResponseEntity<String> confirmarPagamento(@PathVariable("id") UUID id) {
         pedidoService.confirmarPagamento(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok("Pagamento confirmado com sucesso. Status: FECHADO");
+    }
+
+    @PostMapping("/{id}/em-preparacao")
+    public ResponseEntity<String> marcarEmPreparacao(@PathVariable("id") UUID id) {
+        pedidoService.marcarEmPreparacao(id);
+        return ResponseEntity.ok("Pedido em preparação. Status: EM_PREPARACAO");
     }
 
     @PostMapping("/{id}/enviar")
-    public ResponseEntity<Void> enviarPedido(@PathVariable("id") UUID id) {
+    public ResponseEntity<String> enviarPedido(@PathVariable("id") UUID id) {
         pedidoService.enviarPedido(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok("Pedido enviado. Status: ENVIADO");
+    }
+
+    @PostMapping("/{id}/em-transito")
+    public ResponseEntity<String> marcarEmTransito(@PathVariable("id") UUID id) {
+        pedidoService.marcarEmTransito(id);
+        return ResponseEntity.ok("Pedido em trânsito. Status: EM_TRANSITO");
+    }
+
+    @PostMapping("/{id}/entregar")
+    public ResponseEntity<String> marcarEntregue(@PathVariable("id") UUID id) {
+        pedidoService.marcarEntregue(id);
+        return ResponseEntity.ok("Pedido entregue com sucesso. Status: ENTREGUE");
     }
 
     @PostMapping("/{id}/cancelar")
-    public ResponseEntity<Void> cancelarPedido(@PathVariable("id") UUID id) {
+    public ResponseEntity<String> cancelarPedido(@PathVariable("id") UUID id) {
         pedidoService.cancelarPedido(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok("Pedido cancelado. Status: CANCELADO");
     }
 
     @GetMapping("/{id}")
@@ -54,6 +70,4 @@ public class PedidoController {
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
-
-
 }
