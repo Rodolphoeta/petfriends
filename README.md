@@ -72,8 +72,17 @@ docs/insomnia/pedidos-petfriends-insomnia.yaml
 para configurar as requisições HTTP HTTPs
 
 # OBS: AO TESTAR REQUISIÇÕES HTTP, EDITAR O ID GERADO AO CRIAR PEDIDO NO INSOMNIA
+1. Clique em "Criar Pedido"
+2. Vá na aba Scripts → After-response
+3. Cole isso:
+   const response = insomnia.response.json();
+   if (response && response.id) {
+   insomnia.environment.set("pedidoId", response.id);
+   }
+
 - Ctrl + E Edit Environments → click to edit
-- use o json abaixo para alterar endpoints url e id
+- use o json abaixo para alterar endpoints url e id 
+- (CRIE APENAS url NO JSON SE USAR O MÉTODO ACIMA, POIS id SERÁ IMPLEMENTADO AUTOMATICAMENTE)
   {
   "url" : "http://localhost:8080",
   "id": "[altere-pelo-token-gerado-ao-criar-pedido]"
