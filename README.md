@@ -66,11 +66,6 @@ docker compose up -d
 # O docker-compose.yml já está no projeto. Para verificar se subiu:
 docker compose ps
 
-
-
-# Para Rodar o RabbitMQ, rode o comando docker no terminal para a aplicação funcionar:
-docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
-
 # Insomnia
 Importe o arquivo no caminho abaixo para o insomnia
 docs/insomnia/pedidos-petfriends-insomnia.yaml 
